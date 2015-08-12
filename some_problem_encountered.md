@@ -18,7 +18,7 @@ body宽度不等于文档宽度造成的混蛋
 
 	将来还能使用flex布局让块状元素居中
 
-## 8月6日
+## 8月7日
 1. 对于css文件的部署，有一个问题就是多余css的问题，有一些css中的一些类对于某些页面无用，如果都放在里面，会导致大量的冗余的情况，增大不必要流量。对于像导航栏或者footer这些元素的话，可以有一个统一的文件。而其他特殊功能性的东西，应该放在其他单独的文件中
 2. 有一个神奇的选择器，可以修改input中placeholder中文字的
 `::-moz-placeholder,::-webkit-input-placeholder, :-ms-input-placeholder`
@@ -28,4 +28,45 @@ body宽度不等于文档宽度造成的混蛋
 
 ## 8月11日
 1. 今天在修改所有的html的导航条的时候，思考到了可维护性的问题，如何将前端开发进行模块化，让整个架构有更高的可维护性，有更好的开发效率，这个是我们需要考虑的问题。如今有sass + compass提供了非常方便的功能`@import` `@mixin`。 使用这个就可将不同功能的css 进行划分在不同的文件当中，然后统一导入到main.scss中进行编译压缩。
-2. 
+
+## 8月12日
+
+> 相关内容：
+[css selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+
+1. 一个极端的css例子 `html > body > .nav > .header` 可以用简单的 `nav__header` 来代替。与其想方设法去定位一个元素，不如直击目标，为它加上一个语意化的类。这儿有一种非常有用的命命方式叫做BEM(Block Element Modifier)
+
+		.header{
+			.header__title{
+				.header__title__left{
+					//scss code
+				}
+				.header__title__right{
+					//scss code
+				}
+			}
+		}
+
+2. css 代码的编写的时候，如果有父子关系的代码，可以使用恰当的缩进为编码人员提供额外的信息，另外，利用注释可以让维护变的方便
+
+		/* 
+		 * ^footer(在修改的时候搜索^content)作为一种标签来使用
+		 */
+		.footer{
+		
+		}
+			.footer-left{
+			
+			}
+			.footer-right{
+			
+			}
+		.header{
+		
+		}
+			.header-left{
+			
+			}
+			.header-right{
+			
+			}
